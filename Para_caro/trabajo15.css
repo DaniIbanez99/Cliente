@@ -1,0 +1,23 @@
+.menu-horizontal {
+    display: flex;
+}
+
+.menu-item {
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.menu-item:hover .submenu {
+    display: block;
+}

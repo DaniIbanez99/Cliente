@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="trabajo12.css">
+    <title>Trabajo 12</title>
+</head>
+<body>
+    <img id="imagen" src="bimba.jpg" width="400" height="400">
+    <button id="boton1" onclick="moverIzquierda()">Izquierda</button>
+    <button id="boton2" onclick="moverDerecha()">Derecha</button>
+</body> 
+<script>
+    var derecha = document.getElementById("boton2");
+    var izquierda = document.getElementById("boton1");
+    var MiImagen = document.getElementById("imagen");
+
+    derecha.addEventListener("click", function(){
+        moverImagen(5);
+    })
+    izquierda.addEventListener("click", function(){
+        moverImagen(-5);
+    })
+
+    function moverImagen(pixels){
+       // Obtén la posición actual de la imagen
+    var posicionActual = MiImagen.style.left || "0px";
+    
+    // Convierte la posición actual en un número
+    var posicionNumerica = parseInt(posicionActual, 10);
+
+    // Calcula la nueva posición sumando los píxeles especificados
+    var nuevaPosicion = posicionNumerica + pixels;
+
+    // Establece la nueva posición como estilo de la imagen
+    MiImagen.style.left = nuevaPosicion + "px";
+    }
+
+</script>
+</html>
+
+
+
+
+
+
