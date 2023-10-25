@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <h1>Ejercicio 3</h1>
+    <input type="submit" name="perdir" onclick="entero()">
+    <div id="result"></div>
+    <script>
+        function entero(){
+            const x = parseInt(prompt("Introduce un número mayor que dos"));
+
+            if(isNaN(x) || x <= 2){ // isNan(x) es para asegurarse que x sea un número valido
+                document.getElementById("result").textContent = "El número tiene que ser mayor a 2."
+            }else {
+                const multiples = [];
+                for(var i = 1;i <= x; i++){
+                    if(x % i === 0){ //Se utiliza para verificar si "i" es un múltiplo de "x".
+                        multiples.push(i);
+                    }
+                }
+               const matriz = [];
+               for(var i = 0;i < multiples.length; i++){
+                matriz[i] = []; // Esto prepara cada estrucutura de la matriz poniendo un array para cada fila de la matriz
+                for(let j = 0; j < multiples.length; j++){
+                    matriz[i][j] = multiples[i] * multiples[j]; //Esto rellena cada fila [i] = es la fila , [j] = es el multiplo.
+                }
+               }
+               const resultDiv = document.getElementById("result");
+               resultDiv.innerHTML = "Matriz de Múltiplos:\n";
+               resultDiv.innerHTML += "<pre>";
+               for(var i = 0; i < multiples.length; i++){
+                    for(let j = 0; j < multiples.length; j++){
+                        resultDiv.innerHTML += matriz[i][j].toString().padStart(2, '0') + ' '; //padStart(2, '0') te dice que la cadena tenga dos caracteres minimo donde el cual si solo tiene un numero, pues que te añada un 0.;
+                    }
+                    resultDiv.innerHTML += "\n";
+               }
+               resultDiv.innerHTML += "</pre>"
+            }
+            
+        }
+    </script>
+</body>
+</html>
