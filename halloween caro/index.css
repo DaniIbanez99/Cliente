@@ -1,0 +1,46 @@
+body{
+    background-image: url(./fondo-1.gif);
+    background-size: cover;
+}
+/*Menu Principal*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;600&display=swap');
+#titulo{
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 16%;
+    margin-top: 13%;
+    color: #cfcfcf;
+    font-weight: 100;
+    font-size: 300%;
+}
+/*Sub-menu*/
+.menu{
+    font-size: x-large;
+    margin-left: 16%;
+    font-family: 'Roboto Mono', monospace;
+    color:#cfcfcf;
+    width: 5%;
+    padding: 1%;
+}
+.menu-item{
+    margin: 1%;
+    cursor: pointer;
+}
+.menu-title{
+    margin: 0;
+    padding: 1%;
+}
+.submenu{
+    display: none;
+    padding-left: 2%;
+}
+.submenu p{
+    margin: 0;
+    padding: 0.5%;
+    cursor: pointer;
+}
+.submenu.activo{
+    display: block;
+}
+.menu-title:hover {
+    background-color: #555;
+}
