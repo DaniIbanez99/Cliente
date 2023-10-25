@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <h1>Ejercicio 3</h1>
+    <input type="number" id="numberInput" placeholder="Ingresa un número mayor a 2">
+    <button onclick="createAndDisplayMatrix()">Crear Matriz</button>
+    <div id="matrix-container"></div>
+    <script>
+        function createAndDisplayMatrix() {
+          const N = parseInt(document.getElementById('numberInput').value);// el value te permite acceder al contenido ingresado por el usuario en ese elemento.
+          const matrixContainer = document.getElementById('matrix-container');
+    
+          if (!isNaN(N) && N > 2) { // isNan para ver si es un numero valido.
+            const matrix = [];
+    
+            for (let i = 1; i <= N; i++) {
+              const row = [];
+              for (let j = 1; j <= N; j++) {
+                const result = (i * j).toString().padStart(2, '0');// padstart para asegurar que los numeros tengan un ancho de dos caracteres y se alineen correctamente.
+                row.push(result);
+              }
+              matrix.push(row);
+            }
+    
+            matrixContainer.innerHTML = 'La matriz es:<br>';
+    
+            for (let i = 0; i < N; i++) {
+              matrixContainer.innerHTML += matrix[i].join(' ') + '<br>';
+            }
+          } else {
+            matrixContainer.innerHTML = 'El número debe ser mayor a 2. Inténtalo de nuevo.';
+          }
+        }
+      </script>
+</body>
+</html>
