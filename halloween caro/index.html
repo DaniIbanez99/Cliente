@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Five Nights at Freddy's</title>
+</head>
+<body>
+    <h1 id="titulo">
+        Five<br>
+        Nights<br>
+        at<br>
+        Freddy's
+    </h1>
+    <div class="menu">
+        <div class="menu-item">
+            <p class="menu-title">Inicio</p>
+            <div class="submenu">
+                <p>Game</p>
+                <p>Personajes</p>
+                <p>MiniJuego</p>
+                <p>Recetas</p>
+                <p>Película</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        //Menu
+        document.addEventListener("DOMContentLoaded", function () {
+            var menuItems = document.querySelectorAll(".menu-item");
+
+            menuItems.forEach(function (item) {
+                var submenu = item.querySelector(".submenu");
+                
+                if (submenu) {
+                    item.addEventListener("click", function () {
+                        submenu.classList.toggle("activo");
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
