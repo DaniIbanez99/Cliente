@@ -1,0 +1,18 @@
+*{
+    background-color: black;
+}
+#tit{
+    font-family: 'Roboto Mono', monospace;
+    color: #cfcfcf;
+    text-align: center;
+    margin-top: 6%;
+}
+.Freddy{
+   background-color: blue;
+   padding: 2%;
+   width: 15%;
+}
+#personaje1{
+    background-color: rgb(170, 165, 165);
+    margin-left: 40%;
+}

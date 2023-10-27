@@ -84,3 +84,11 @@ body{
 .menu-title:hover {
     background-color: #555;
 }
+/*Contenedor*/
+#container{
+    display: absolute;
+    gap: 6rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
