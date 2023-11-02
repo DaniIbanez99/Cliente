@@ -36,6 +36,7 @@
     width: 30%; /* Tamaño de la imagen */
     height: 25%;
     margin-right: 6px; /* Espacio entre la imagen y el texto */
+    margin-left: 3%;
 }
 #container{
     display: grid;
