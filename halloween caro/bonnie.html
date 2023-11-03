@@ -1,55 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información Bonnie</title>
-    <style>
-        * {
-            font-family: 'Roboto Mono', monospace;
-            background-color: black;
-        }
-        .titulo {
-            text-align: center;
-            margin-top: 5%;
-            color: #cfcfcf;
-        }
-        .boton-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .boton {
-            margin-top: 10px;
-            color: white;
-        }
-        .imagen-container {
-            margin-left: 1%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .imagen {
-            height: 600px;
-        }
-        #descripcion{
-            width: 45%;
-            color:#cfcfcf;
-        }
-    </style>
-</head>
-<body>
-    <h1 class="titulo">Freddy</h1>
-    <div class="gallery">
-        <div class="imagen-container">
-            <img class="imagen" id="photo" src="./freddy0.jpg" alt="Foto 1">
-            <p id="descripcion">Descripción de la Foto 1</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Información Bonnie</title>
+        <style>
+            * {
+                font-family: 'Roboto Mono', monospace;
+                background-color: black;
+            }
+            .titulo {
+                text-align: center;
+                margin-top: 5%;
+                color: #cfcfcf;
+            }
+            .gallery {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .imagen-container {
+                margin: 1%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .imagen {
+                max-width: 100%; /* Responsive image width */
+                height: auto; /* Maintain aspect ratio */
+            }
+            #descripcion {
+                width: 100%; /* Full width for description */
+                color: #cfcfcf;
+                text-align: center; /* Center text */
+            }
+            .boton-container {
+                display: flex;
+                justify-content: center;
+            }
+            .boton {
+                margin-top: 10px;
+                color: white;
+            }
+            @media (max-width: 768px) {
+                .imagen-container {
+                    margin: 0; /* Remove margin for small screens */
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="titulo">Bonnie</h1>
+        <div class="gallery">
+            <div class="imagen-container">
+                <img class="imagen" id="photo" src="./bonnie0.jpg" alt="Foto 1">
+                <p id="descripcion">Descripción de la Foto 1</p>
+            </div>
+            <div class="boton-container">
+                <button class="boton" id="prevbutton" disabled>Anterior</button>
+                <button class="boton" id="nextButton">Siguiente</button>
+            </div>
         </div>
-        <div class="boton-container">
-            <button class="boton" id="prevbutton" disabled>Anterior</button>
-            <button class="boton" id="nextButton">Siguiente</button>
-        </div>
-    </div>
     <script>
         let tituloss = ["Bonnie", "Withered Bonnie", "Toy Bonnie", "Phantom Bonnie", "Springtrap"];
         let fotos = ["bonnie0.webp","bonnie1.jpg", "bonnie2.jfif", "bonnie3.jpg", "bonnie4.jpg"];
