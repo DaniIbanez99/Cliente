@@ -20,32 +20,35 @@
                 align-items: center;
             }
             .imagen-container {
-                margin: 1%;
+                margin-left: 1%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                width: 10%;
             }
             .imagen {
-                max-width: 100%; /* Responsive image width */
-                height: auto; /* Maintain aspect ratio */
+                width: 10%;
             }
             #descripcion {
-                width: 100%; /* Full width for description */
+                width: 45%; 
                 color: #cfcfcf;
-                text-align: center; /* Center text */
+                text-align: center; 
             }
             .boton-container {
                 display: flex;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
             }
             .boton {
                 margin-top: 10px;
                 color: white;
             }
+            
             @media (max-width: 768px) {
                 .imagen-container {
-                    margin: 0; /* Remove margin for small screens */
+                    margin: 0; 
                 }
+
             }
         </style>
     </head>
@@ -107,7 +110,10 @@
             }
         });
 
+
+       
+
         enseñarFoto();
     </script>
 </body>
-</html>ºº
+</html>
