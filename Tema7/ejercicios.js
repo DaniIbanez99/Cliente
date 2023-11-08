@@ -1,87 +1,65 @@
-//Ejercicio 1
-
-    let tutor = {
-        nombre : "Carol",
-        edad : 30,
-        dni : "12345678A",
-        titulo_universitario : "Ingeniera Informática"
+class Tutor {
+    //creamos clase de tutor, asignatura y alumno con un constructor pasando valores
+    constructor(nombre, edad, dni, tituloUniversitario) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.dni = dni;
+        this.tituloUniversitario = tituloUniversitario;
     }
-//ejercicio 2
+}
 
-    let asignaturas = [
-    {
-        nombre : "Programacion",
-        curso : 2,
-        horas_totales : 120
-    },
-    {
-        nombre : "Base de Datos",
-        curso : 2,
-        horas_totales : 80
-    },
-    {
-        nombre : "Interfaces",
-        curso : 2,
-        horas_totales : 134
-    },
-    {
-        nombre : "Lenguaje de Marcas",
-        curso : 2,
-        horas_totales : 100
-    }];
-
-//ejercicio 3
-
-    let alumno = {
-        nombre : "Dani",
-        edad : 24,
-        ciclo : "Daw",
-        curso : 2,
-        tutor: tutor,
-        asignaturas: asignaturas,
-        notas : {
-            programacion: 7,
-            base_de_datos: 9,
-            interfaces: 10,
-            lenguajes_de_marcas: 8
-        }
+class Asignatura {
+    constructor(nombre, curso, horasTotales) {
+        this.nombre = nombre;
+        this.curso = curso;
+        this.horasTotales = horasTotales;
     }
+}
 
-    //Ejercicio 4
+//creamos cuatro objetos para las asignaturas
+const asignatura1 = new Asignatura("Programación", 2, 120);
+const asignatura2 = new Asignatura("Lenguajes de Marcas", 2, 80);
+const asignatura3 = new Asignatura("Base de Datos", 2, 134);
+const asignatura4 = new Asignatura("Interfaces", 2, 100);
 
-    let DatosAlumnos = {
-        nombre : '${alumno.nombre}',
-        edad : '${alumno.edad}',
-        ciclo : '${alumno.ciclo}',
-        curso : '${alumno.curso}',
-        tutor : '${alumno.tutor}',
-        asignaturas : '${alumno.asignaturas}',
-        notas : '${alumno.notas}'
+const asignaturas = [asignatura1, asignatura2, asignatura3, asignatura4];
+
+class Alumno {
+    constructor(nombre, edad, ciclo, curso, tutor, asignaturas) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.ciclo = ciclo;
+        this.curso = curso;
+        this.tutor = tutor;
+        this.asignaturas = asignaturas;
+        this.notas = new Array(asignaturas.length);
     }
+}
 
-    for(const alumnos of DatosAlumnos){
-        
-    }
-    // Crear listas para asignaturas y notas
-    var asignaturasList = document.createElement('ul');
-    var notasList = document.createElement('ul');
+const tutor = new Tutor("Caro", 40, "12345678C", "Ingeniera informática");
+const alumno = new Alumno("Daniel", 24, "DAW", 2, tutor, asignaturas);
 
-    for(let i = 0; i < alumno.asignaturas.length; i++){
-        var asignatura = alumno.asignaturas[i];
-        var nota = alumno.notas[asignatura.nombre];
+alumno.notas = [10, 8, 9, 7];
 
-        var asignaturaItem = document.createElement('li');
-        asignaturaItem.textContent = asignatura.nombre + " - " + asignatura.curso + " - Horas Totales: " + asignatura.horas_totales;
-        asignaturasList.appendChild(asignaturaItem);
+// mostrar la información en el HTML
+document.getElementById("nombre").textContent = alumno.nombre;
+document.getElementById("edad").textContent = alumno.edad;
+document.getElementById("ciclo").textContent = alumno.ciclo;
+document.getElementById("curso").textContent = alumno.curso;
+document.getElementById("tutor").textContent = alumno.tutor.nombre;
 
-        var notaItem = document.createElement('li');
-        notaItem.textContent = 'DatosAlumnos';
-        notasList.appendChild(notaItem);
-    }
+//se accede a los elementos en el documento html
+const asignaturasList = document.getElementById("asignaturas");
+//se crean listas de asignaturas y notas
+alumno.asignaturas.forEach(asignatura => {
+    const li = document.createElement("li");
+    li.textContent = `${asignatura.nombre} (curso ${asignatura.curso}, ${asignatura.horasTotales} horas totales)`;
+    asignaturasList.appendChild(li);
+});
 
-
-
-    // Agregar las listas al documento HTML
-    document.body.appendChild(asignaturasList);
-    document.body.appendChild(notasList);
-        
+const notasList = document.getElementById("notas");
+alumno.notas.forEach((nota, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${alumno.asignaturas[index].nombre}: ${nota}`;
+    notasList.appendChild(li);
+});
