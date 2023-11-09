@@ -6,6 +6,14 @@ class Tutor {
         this.dni = dni;
         this.tituloUniversitario = tituloUniversitario;
     }
+    // Método para mostrar los datos del tutor
+    mostrar() {
+        return `Nombre: ${this.nombre}, Edad: ${this.edad}, DNI: ${this.dni}, Título Universitario: ${this.tituloUniversitario}`;
+    };
+    cambiarNombre(Sebas){
+        
+        this.nombre = Sebas;
+    }
 }
 
 class Asignatura {
@@ -34,6 +42,9 @@ class Alumno {
         this.asignaturas = asignaturas;
         this.notas = new Array(asignaturas.length);
     }
+    calcularMedia(){
+        return 'nombre ${this.nombre}, ';
+    };
 }
 
 const tutor = new Tutor("Caro", 40, "12345678C", "Ingeniera informática");
@@ -63,3 +74,25 @@ alumno.notas.forEach((nota, index) => {
     li.textContent = `${alumno.asignaturas[index].nombre}: ${nota}`;
     notasList.appendChild(li);
 });
+
+//Ejercicio 5
+
+// Crear una instancia de la clase Tutor
+let miTutor = new Tutor("Carol", 25, "12345678S", "Licenciado en Educación");
+function devolver() {
+    let datosTutor = miTutor.mostrar();
+    document.getElementById("resultado").textContent = datosTutor;
+}
+ 
+function cambiarNombre(){
+    //Cambiar el nombre del tutor
+    miTutor.cambiarNombre("Sebas");
+
+    //Mostrar los datos actualizados
+    let datosTutor2= miTutor.mostrar();
+    document.getElementById("resultado2").textContent = datosTutor2;
+}
+
+
+
+
