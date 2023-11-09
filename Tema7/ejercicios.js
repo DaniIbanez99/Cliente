@@ -42,9 +42,7 @@ class Alumno {
         this.asignaturas = asignaturas;
         this.notas = new Array(asignaturas.length);
     }
-    calcularMedia(){
-        return 'nombre ${this.nombre}, ';
-    };
+    
 }
 
 const tutor = new Tutor("Caro", 40, "12345678C", "Ingeniera informática");
