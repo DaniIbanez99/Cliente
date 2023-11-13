@@ -6,27 +6,44 @@
     <title>Plataforma</title>
 </head>
 <body>
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Información</title>
-</head>
-<body>
     <div class="alumno-info">
         <h2>Información del Alumno</h2>
-        <p><strong>Nombre:</strong> <span id="nombre"></span></p>
-        <p><strong>Edad:</strong> <span id="edad"></span></p>
-        <p><strong>Ciclo:</strong> <span id="ciclo"></span></p>
-        <p><strong>Curso:</strong> <span id="curso"></span></p>
-        <p><strong>Tutor:</strong> <span id="tutor"></span></p>
+   
+        <!-- Información de todos los alumnos -->
+<div id="informacionTodosAlumnos"></div>
+
+
         <h3>Asignaturas:</h3>
-        <ul id="asignaturas"></ul>
+        <button onclick="mostrarAsignaturas()">Mostrar asignaturas</button>
+        <div id="asignaturas"></div>
+
+        <label>Selecciona una asignatura</label>
+        <select id="seleccionada">
+            <option value="0">Programación</option>
+            <option value="1">Lenguaje de marcas</option>
+            <option value="2">Base de Datos</option>
+            <option value="3">Interfaces</option>
+        </select>
+        <br><br>
+        <label>Selecciona una hora</label>
+        <input type="number" id="number">
+        <button onclick="cambiarHora()">Cambiar hora</button>
+
         <h3>Notas:</h3>
         <ul id="notas"></ul>
-        <button id="datosTutor" onclick="devolver()">Datos Tutor</button>
+
+        <button id="datosTutor" onclick="alumno1.tutor.devolverDatos()">Datos Tutor</button>
         <div id="resultado"></div>
-        <button id="CambiarNombre" onclick="cambiarNombre()">Datos Tutor</button>
-        <div id="resultado2"></div>
+        <label>Cambiar el nombre del tutor:</label>
+        <input type="text" id="tutor">
+        <button onclick="cambiarTutor()">Cambiar tutor</button><br>
+        <label>(Será necesario darle al botón otra vez para ver los cambios)</label>
+
+        <h3>Calculo de media de alumno</h3>
+        <label for="nombreAlumno">Nombre del Alumno:</label>
+        <input type="text" id="nombreAlumno" >
+        <button onclick="calcularMediaPorNombre()">Calcular Media</button>
+        <h2 id="mediaPorNombre"></h2>
     </div>
     <script src="ejercicios.js"></script>
 </body>
