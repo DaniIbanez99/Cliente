@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" type="text/css">
+    <style>
+        .menu-horizontal {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 0, 0, 0.562);
+            width: 80%;
+            margin-left: 10%;
+        }
+        .menu-item {
+            list-style: none;
+            margin: 5px;
+            font-family: 'Roboto Mono', monospace;
+        }
+        .menu-title {
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            padding: 5px 10px;
+        }
+        .menu-title:hover {
+            text-decoration: underline;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            border: 1px solid #555;
+            padding: 10px;
+            z-index: 1;
+        }
+        .menu-item:hover .submenu,
+        .menu-item:focus-within .submenu {
+            display: block;
+        }
+        .submenu p {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="menu-horizontal">
+        <li class="menu-item">
+            <a class="menu-title" href="menu.html">Menu</a>
+        </li>
+    </nav>
+
+    <div id="taskForm">
+        <label for="task">Nueva Tarea:</label>
+        <input type="text" id="task" name="task" required>
+        <button onclick="addTask()">Agregar Tarea</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function addTask() {
+                var taskInput = document.getElementById('task');
+                var taskList = document.getElementById('taskList');
+
+                // Obtener el valor del input
+                var taskText = taskInput.value;
+
+                // Crear un nuevo elemento de lista y un botón de eliminación
+                var listItem = document.createElement('li');
+                var deleteButton = document.createElement('button');
+
+                // Configurar el contenido del elemento de lista y el botón de eliminación
+                listItem.textContent = taskText;
+                deleteButton.textContent = 'Eliminar';
+                deleteButton.className = 'delete-button';
+
+                // Agregar el botón de eliminación al elemento de lista
+                listItem.appendChild(deleteButton);
+
+                // Agregar el elemento de lista a la lista
+                taskList.appendChild(listItem);
+
+                // Limpiar el input después de agregar la tarea
+                taskInput.value = '';
+
+                // Agregar un evento al botón de eliminación para eliminar la tarea
+                deleteButton.addEventListener('click', function () {
+                    taskList.removeChild(listItem);
+                });
+            }
+
+            window.addTask = addTask; // Hacer la función accesible desde el ámbito global
+        });
+    </script>
+</body>
+</html>

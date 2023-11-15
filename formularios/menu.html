@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menu-horizontal {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 0, 0, 0.562);
+            width: 80%;
+            margin-left: 10%;
+        }
+        .menu-item {
+            list-style: none;
+            margin: 5px;
+            font-family: 'Roboto Mono', monospace;
+        }
+        .menu-title {
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            padding: 5px 10px;
+        }
+        .menu-title:hover {
+            text-decoration: underline;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            border: 1px solid #555;
+            padding: 10px;
+            z-index: 1;
+        }
+        .menu-item:hover .submenu,
+        .menu-item:focus-within .submenu {
+            display: block;
+        }
+        .submenu p {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="menu-horizontal">
+        <li class="menu-item">
+            <a class="menu-title" href="tareas.html">Tareas</a>
+        </li>
+    </nav>
+</body>
+</html>
