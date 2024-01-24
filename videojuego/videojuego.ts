@@ -14,10 +14,10 @@ class jugador{
     }  
      
     imprimirAtributos(): void{     
-        console.log('Nombre: ${this.nombre}');
-        console.log('Puntos de Salud: ${this.puntos_salud}');
-        console.log('Puntos de Ataque: ${this.puntos_ataque}');
-        console.log('Dinero: ${this.dinero}');
+        console.log(`Nombre: ${this.nombre}`);
+        console.log(`Puntos de Salud: ${this.puntos_salud}`);
+        console.log(`Puntos de Ataque: ${this.puntos_ataque}`);
+        console.log(`Dinero: ${this.dinero}`);
     }    
     calcularFuerzaInicial(): void{
        this.puntos_ataque = Math.floor(Math.random() * 12) + 1; 
@@ -43,10 +43,27 @@ class enemigo {
         let monedita = 0;
 
         monedita =  Math.floor(Math.random() * 5) + 1;
-        console.log('${this.nombre} soltó ${this.moneditaSuelta} monedas.');
+        console.log(`${this.nombre} soltó ${this.moneditaSuelta} monedas.`);
      }
+
 }
 
 class Main{
-    let nombrecitos: string[] = [];
+    
+     nombrecitos: string[] = ["Bea", "Fernando", "Sebas", "Ramirez", "Ariel", "Paquillo"];
+     
+     InicioJuego(): void{
+            console.log("uwu");
+     }
+     
+     IntroducirNombre(): void{
+        console.log("Introduce tu nombre:");
+     }
+
+     ResertFuerza(): {
+
+        
+     }
+
+     
 }
