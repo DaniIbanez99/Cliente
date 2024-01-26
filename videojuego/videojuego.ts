@@ -23,31 +23,99 @@ class jugador {
     calcularFuerzaInicial(): void {
         this.puntos_ataque = Math.floor(Math.random() * 12) + 1;
     }
+
+    recogerDinero(moneditaSuelta: number): void{
+        this.dinero += moneditaSuelta;
+    }
+
+    mostrarPanelComprar(): void{
+        console.log("Comprar armas");
+        console.log("1. Bomba = 5 monedas (+4 daño)");
+        console.log("2. Metralleta = 12 monedas (+6 daño)");
+        console.log("3. Pistola = 8 monedas (+2 daño)");
+        console.log("4. Tirita curacion = 6 monedas (+2 vida)");
+        console.log("5. Salir de la compra");
+    }
+
+    comprarArma(opcion: string): void {
+        let precio: number;
+        let ataqueExtra: number;
+
+        switch (opcion) {
+            case '1':
+                precio = 5;
+                ataqueExtra = 4;
+                break;
+            case '2':
+                precio = 12;
+                ataqueExtra = 6;
+                break;
+            case '3':
+                precio = 8;
+                ataqueExtra = 2;
+                break;
+            case '4':
+                precio = 6;
+                // En lugar de ataque extra, se añaden puntos de vida
+                ataqueExtra = 0;
+                this.puntos_salud += 2; // Ajusta según tus necesidades
+                console.log("Has comprado una tirita de curación. Recuperas 2 puntos de vida.");
+                break;
+            case '5':
+                console.log("Volviendo al menú principal.");
+                return;
+            default:
+                console.log("Opción no válida. No has comprado nada.");
+                return;
+        }
+
+        if (this.dinero >= precio) {
+            this.dinero -= precio;
+            this.puntos_ataque += ataqueExtra;
+            console.log(`Has comprado el arma. Tu nuevo ataque es: ${this.puntos_ataque}`);
+        } else {
+            console.log("No tienes suficiente oro para comprar esa arma.");
+        }
+    }
 }
 
 class enemigo {
     private nombre: string;
-    private puntos_ataque: number;
+    private ataque: number;
+    private salud: number;
     private moneditaSuelta: number;
+
+    obtenerAtaque(): number{
+        return this.ataque;
+    }
 
     constructor(nombre: string) {
         this.nombre = nombre;
-        this.puntos_ataque = 0;
+        this.salud = 0;
+        this.ataque = 0;
         this.moneditaSuelta = 0;
     }
+    
+    imprimirAtributosEnemigos(): void {
+            console.log(`Nombre del enemigo: ${this.nombre}`);
+            console.log(`Puntos de Ataque del enemigo: ${this.ataque}`);
+            console.log(`Puntos de Salud del enemigo: ${this.salud}`);
+        }
 
     calcularFuerzaEnemigo(): void {
-        this.puntos_ataque = Math.floor(Math.random() * 12) + 1;
+        this.ataque = Math.floor(Math.random() * 20) + 1;
     }
 
-    imprimirAtributos(): void {
-        console.log(`Nombre del enemigo: ${this.nombre}`);
-        console.log(`Puntos de Ataque del enemigo: ${this.puntos_ataque}`);
+    calcularSaludEnemigo(): void {
+        this.salud = Math.floor(Math.random() * 20) + 1;
     }
 
-    SoltarDinero(): void {
+   
+
+    soltarDinero(): number {
         let monedita = Math.floor(Math.random() * 5) + 1;
         console.log(`${this.nombre} soltó ${monedita} monedas.`);
+        return monedita;
     }
 }
 
@@ -66,6 +134,8 @@ function Main() {
     let jugador1 = new jugador(nombre);
     jugador1.calcularFuerzaInicial();
     jugador1.imprimirAtributos();
+
+   
 
     let cambiarFuerza = readlineSync.keyInYNStrict("¿Quieres cambiar tu fuerza por 1 oro aleatoriamente?");
 
@@ -94,14 +164,36 @@ function Main() {
             case '1':
                 console.log("Te enfrentarás contra...");
                 const enemigoAleatorio = obtenerEnemigoAleatorio(nombresEnemigos);
-                enemigoAleatorio.imprimirAtributos(); // Imprime los atributos del enemigo
-               
+                enemigoAleatorio.calcularFuerzaEnemigo(); // Calcular fuerza enemiga
+                enemigoAleatorio.calcularSaludEnemigo();  // Calcular salud enemiga
+                enemigoAleatorio.imprimirAtributosEnemigos(); 
+
+                if (jugador1.puntos_ataque >= enemigoAleatorio.obtenerAtaque()) {
+                    console.log("¡Ganaste el combate y ganas oro!");
+                    const monedaGanadas = enemigoAleatorio.soltarDinero();
+                    jugador1.recogerDinero(monedaGanadas);
+                } else {
+                    const diferenciaAtaque = enemigoAleatorio.obtenerAtaque() - jugador1.puntos_ataque;
+                    jugador1.puntos_salud -= diferenciaAtaque;
+            
+                    if (jugador1.puntos_salud <= 0) {
+                        console.log("¡Perdiste el juego! Tu vida ha llegado a 0.");
+                        process.exit(0); // Salir del juego
+                    } else {
+                        console.log(`Perdiste el combate. Pierdes ${diferenciaAtaque} puntos de salud.`);
+                    }
+                }
                 break;
+
             case '2':
-                console.log("uwu");
+                jugador1.mostrarPanelComprar();
+
+                let opcionCompra: string = readlineSync.question("Elige un numero");
+                jugador1.comprarArma(opcionCompra);
+
                 break;
             case '3':
-                console.log("Las estadísticas son:");
+                console.log("Las estadisticas son:");
                 jugador1.imprimirAtributos();
                 break;
             case '4':
