@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+</head>
+<body>
+    
+    <!--V-MODEL-->
+    <div id="Model">
+        Ingresa tu nombre:
+        <input type="text" v-model="nombre">
+        <p>{{nombre}}</p>
+    </div>
+
+    <div id="AplicacionIF">
+        <p>Ingrese un número entre el 1 al 1000:
+        <input type="number" v-model="numero" min="1" max="1000"></p>
+        <p v-if="numero<=9">Tiene un dígito</p>
+        <p v-else-if="numero<=99">Tiene dos dígitos</p>
+        <p v-else-if="numero<=999">Tiene tres dígitos</p>
+        <p v-else>Tiene cuatro dígitos</p>
+    </div>
+
+    <div id="AplicacionFOR">
+        <p>Compañeros por culeros</p>
+     <ul>
+          <li v-for="companero in companeros">{{companero}}</li>
+      </ul>
+    </div>
+
+    <div id="AplicacionClick">
+        <button v-on:mousedown="showMessage" v-on:mouseup="hideMessage">Haz click aquí</button>
+        <p>{{mensaje}}</p>
+    </div>
+
+    <div id="AplicacionMouse">
+        <div v-on:mouseenter="showMessage" v-on:mouseleave="hideMessage">
+            <p>Pasa el ratón sobre el párrafo.</p>
+        </div>
+        <p>{{mensaje1}}</p>
+    </div>
+
+    <div id="AplicacionBind">
+        <div v-bind:style="{ backgroundColor: backgroundColor, width: width }">
+            <p>Div con color de fondo</p>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="main.js"></script>
+</body>
+</html>
